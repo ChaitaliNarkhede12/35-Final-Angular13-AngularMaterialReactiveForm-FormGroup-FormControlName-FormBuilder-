@@ -1,0 +1,70 @@
+<form class="example-form" [formGroup]="empForm">
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="First Name" formControlName="name">
+    <mat-error *ngIf="empForm['controls']['name'].errors">
+      <span *ngIf="empForm['controls']['name'].errors['required']">
+        Name is required
+      </span>
+      <span *ngIf="empForm['controls']['name'].errors['maxlength']">
+        Name is of max length 5
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <br />
+
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="email" formControlName="email">
+    <mat-error *ngIf="empForm['controls']['email'].errors">
+      <span *ngIf="empForm['controls']['email'].errors['required']">
+        email is required
+      </span>
+      <span *ngIf="empForm['controls']['email'].errors['email']">
+        enter correct email
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <br />
+
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="mobile Number" formControlName="mobileNumber">
+    <mat-error *ngIf="empForm['controls']['mobileNumber'].errors">
+      <span *ngIf="empForm['controls']['mobileNumber'].errors['required']">
+        mobile Number is required
+      </span>
+      <span *ngIf="empForm['controls']['mobileNumber'].errors['pattern']">
+        mobile Number should be 10 digit
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <br />
+
+  <mat-form-field class="example-full-width">
+    <input type="number" matInput placeholder="salary" formControlName="salary">
+    <mat-error *ngIf="empForm['controls']['salary'].errors">
+      <span *ngIf="empForm['controls']['salary'].errors['required']">
+        Please enter salary
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <br />
+
+  <mat-form-field class="example-full-width">
+    <mat-select formControlName="country">
+      <mat-option *ngFor="let item of countryList" [value]="item.id">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="empForm['controls']['country'].errors">
+      <span *ngIf="empForm['controls']['country'].errors['required']">
+        Please select counrty
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <br/>
+  <br/>
+  <button type="submit" (click)="onSubmit()">Save</button>
+</form>
